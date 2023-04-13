@@ -13,6 +13,8 @@ spec:
           - name: postgresql-backup
             image: guestros/postgres-s3-backup:latest
             imagePullPolicy: IfNotPresent
+            # stall
+            # command: ["/bin/sh", "-c", "sleep 3000"]
             env:
             - name: PSQL_HOST
               value: "postgres-service.dbstaging.svc.cluster.local"
@@ -22,7 +24,7 @@ spec:
               value: "backup-tradingbot22"
             - name: S3_PATH
               value: ""
-            - name: S3_REGION
+            - name: AWS_DEFAULT_REGION
               value: "eu-central-1"
             - name: S3_ENDPOINT
               value: "https://s3.amazonaws.com"
